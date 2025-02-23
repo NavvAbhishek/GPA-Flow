@@ -1,4 +1,6 @@
 import 'package:code/controllers/bottom_nav_controller.dart';
+import 'package:code/screens/course_entry.dart';
+import 'package:code/screens/final_gpa.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,13 +14,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   final BottomNavController controller = Get.put(BottomNavController());
 
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-
-  static const List<Widget> pages = <Widget>[
-    Text('Add courses', style: optionStyle),
-    Text('Final GPA', style: optionStyle),
-  ];
+  static const List<Widget> pages = <Widget>[CourseEntry(), FinalGPA()];
 
   @override
   Widget build(BuildContext context) {
