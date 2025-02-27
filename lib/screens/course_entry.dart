@@ -48,7 +48,7 @@ class _CourseEntryState extends State<CourseEntry> {
     }
   }
 
-// Header Row
+  // Header Row
   Widget _buildHeaderRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -216,27 +216,37 @@ class _CourseEntryState extends State<CourseEntry> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _buildHeaderRow(),
-              SizedBox(height: 10),
-              ...List.generate(_courseRows.length, (index) {
-                return Column(
-                  children: [
-                    _buildCourseEntryRow(index),
-                    SizedBox(height: 20),
-                  ],
-                );
-              }),
-              SizedBox(height: 30), // Space before the button
-              _buildSubmitButton(), // Submit Button
-            ],
+      body: Column(
+        children: [
+          // Fixed header area
+          // Header row without bottom padding
+          Padding(
+            padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
+            child: _buildHeaderRow(),
           ),
-        ),
+
+// Scrollable course rows with reduced or no top padding
+          Expanded(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.only(top: 8.0), // Minimal top padding
+              scrollDirection: Axis.vertical,
+              child: Column(
+                children: [
+                  for (int index = 0; index < _courseRows.length; index++)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 16.0),
+                      child: _buildCourseEntryRow(index),
+                    ),
+                ],
+              ),
+            ),
+          ),
+          // Fixed button area at bottom
+          Container(
+            padding: EdgeInsets.symmetric(vertical: 20.0),
+            child: _buildSubmitButton(),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
