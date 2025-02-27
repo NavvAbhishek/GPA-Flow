@@ -213,19 +213,36 @@ class _CourseEntryState extends State<CourseEntry> {
     }
   }
 
+  void _removeLastCourseRow() {
+    if (_courseRows.length > 1) {
+      setState(() {
+        _courseRows.removeLast();
+      });
+      Get.snackbar(
+        "Course Row Removed",
+        "Removed one course entry row",
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 1),
+      );
+    } else {
+      Get.snackbar(
+        "Cannot Remove",
+        "At least one course entry row must remain",
+        snackPosition: SnackPosition.BOTTOM,
+        duration: Duration(seconds: 2),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
         children: [
-          // Fixed header area
-          // Header row without bottom padding
           Padding(
             padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
             child: _buildHeaderRow(),
           ),
-
-// Scrollable course rows with reduced or no top padding
           Expanded(
             child: SingleChildScrollView(
               padding: EdgeInsets.only(top: 8.0), // Minimal top padding
@@ -241,25 +258,40 @@ class _CourseEntryState extends State<CourseEntry> {
               ),
             ),
           ),
-          // Fixed button area at bottom
           Container(
             padding: EdgeInsets.symmetric(vertical: 20.0),
             child: _buildSubmitButton(),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _courseRows.add(CourseEntryRow(
-              nameController: TextEditingController(),
-              creditController: TextEditingController(),
-              selectedGrade: '-',
-            ));
-          });
-        },
-        tooltip: 'Add Course',
-        child: Icon(Icons.add),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          // Add course button
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                _courseRows.add(CourseEntryRow(
+                  nameController: TextEditingController(),
+                  creditController: TextEditingController(),
+                  selectedGrade: '-',
+                ));
+              });
+            },
+            tooltip: 'Add Course',
+            heroTag: 'addCourse',
+            child: Icon(Icons.add),
+          ),
+          SizedBox(height: 16), // Spacing between buttons
+          // Remove course button
+          FloatingActionButton(
+            onPressed: _removeLastCourseRow,
+            tooltip: 'Remove Course',
+            heroTag: 'removeCourse',
+            backgroundColor: Colors.red,
+            child: Icon(Icons.remove),
+          ),
+        ],
       ),
     );
   }
