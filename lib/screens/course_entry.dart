@@ -11,8 +11,6 @@ class CourseEntry extends StatefulWidget {
 }
 
 class _CourseEntryState extends State<CourseEntry> {
-  String? _selectedGrade;
-
   final CourseController courseController = Get.put(CourseController());
 
   // List to track entry form state
