@@ -38,7 +38,7 @@ class FinalGPA extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
-                        color: Colors.blue.shade800,
+                        color: Color(0xff023047),
                       ),
                     ),
                     SizedBox(height: 15),

@@ -1,4 +1,3 @@
-// lib/controllers/course_controller.dart
 import 'package:code/models/course_model.dart';
 import 'package:get/get.dart';
 

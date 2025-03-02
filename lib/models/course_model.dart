@@ -1,4 +1,3 @@
-// lib/models/course_model.dart
 class Course {
   String name;
   double credits;
