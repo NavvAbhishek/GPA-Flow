@@ -1,3 +1,4 @@
+import 'package:code/screens/final_gpa.dart';
 import 'package:flutter/material.dart';
 import 'package:code/controllers/course_controller.dart';
 import 'package:code/models/course_model.dart';
@@ -203,6 +204,9 @@ class _CourseEntryState extends State<CourseEntry> {
         snackPosition: SnackPosition.BOTTOM,
         duration: Duration(seconds: 2),
       );
+
+      // Navigate to the FinalGPA screen
+      Get.to(() => FinalGPA());
     } else {
       Get.snackbar(
         "Error",
