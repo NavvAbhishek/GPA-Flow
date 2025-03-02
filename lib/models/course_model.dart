@@ -16,7 +16,7 @@ class Course {
   static double getGradePoints(String grade) {
     switch (grade) {
       case 'A+':
-        return 4.0;
+        return 4.3;
       case 'A':
         return 4.0;
       case 'A-':
