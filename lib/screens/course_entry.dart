@@ -240,6 +240,21 @@ class _CourseEntryState extends State<CourseEntry> {
       body: Column(
         children: [
           Padding(
+            padding: const EdgeInsets.only(top: 56.0, bottom: 8.0, left: 20.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start, // Align to the left
+              children: [
+                Text(
+                  "GPA Flow",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 24.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
             padding: const EdgeInsets.only(top: 16.0, bottom: 8.0),
             child: _buildHeaderRow(),
           ),
