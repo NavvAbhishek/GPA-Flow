@@ -150,14 +150,14 @@ class _CourseEntryState extends State<CourseEntry> {
       },
       style: ElevatedButton.styleFrom(
         minimumSize: Size(250, 50),
-        backgroundColor: Colors.blue,
+        backgroundColor: Color(0xFF023047),
         textStyle: TextStyle(
           fontSize: 18,
         ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12.0),
         ),
-        foregroundColor: Colors.yellow,
+        foregroundColor: Color(0xffFFB703),
       ),
       child: Text("Generate GPA"),
     );
@@ -222,12 +222,6 @@ class _CourseEntryState extends State<CourseEntry> {
       setState(() {
         _courseRows.removeLast();
       });
-      Get.snackbar(
-        "Course Row Removed",
-        "Removed one course entry row",
-        snackPosition: SnackPosition.BOTTOM,
-        duration: Duration(seconds: 1),
-      );
     } else {
       Get.snackbar(
         "Cannot Remove",
@@ -251,9 +245,9 @@ class _CourseEntryState extends State<CourseEntry> {
                 Text(
                   "GPA Flow",
                   style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 24.0,
-                  ),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24.0,
+                      color: Color(0xff023047)),
                 ),
               ],
             ),
@@ -299,6 +293,8 @@ class _CourseEntryState extends State<CourseEntry> {
             },
             tooltip: 'Add Course',
             heroTag: 'addCourse',
+            backgroundColor: Colors.green,
+            foregroundColor: Colors.white,
             child: Icon(Icons.add),
           ),
           SizedBox(height: 16), // Spacing between buttons
@@ -308,6 +304,7 @@ class _CourseEntryState extends State<CourseEntry> {
             tooltip: 'Remove Course',
             heroTag: 'removeCourse',
             backgroundColor: Colors.red,
+            foregroundColor: Colors.white,
             child: Icon(Icons.remove),
           ),
         ],
